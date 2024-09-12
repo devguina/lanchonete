@@ -9,27 +9,28 @@ CREATE TABLE tb_cliente (
     numero_casa INT,                               -- Inteiro para o número da casa
     bairro VARCHAR(255),                           -- String para o bairro
     cidade VARCHAR(255),                           -- String para a cidade
-    telefone CHAR(20)                              -- Char com tamanho 20 para o telefone
+    telefone CHAR(20),                             -- Char com tamanho 20 para o telefone
+    email VARCHAR(100)
 );
 
 CREATE TABLE tb_lanche (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),  -- Gerar um UUID padrão
     nome_lanche VARCHAR(255) NOT NULL,               -- String para o nome do lanche
-    ingredientes TEXT,                              -- String para os ingredientes
+    ingredientes_lanche TEXT,                              -- String para os ingredientes
     valor_lanche FLOAT                              -- Float para o valor do lanche
 );
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'forma_pagamento') THEN
-        CREATE TYPE forma_pagamento AS ENUM ('dinheiro', 'cartao', 'pix');
+        CREATE TYPE forma_pagamento AS ENUM ('1', '2', '3', '4', '5', '6');
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'status_pedido') THEN
-        CREATE TYPE status_pedido AS ENUM ('pendente', 'em_preparacao', 'concluido', 'cancelado');
+        CREATE TYPE status_pedido AS ENUM ('1', '2', '3', '4', '5', '6', '7');
     END IF;
 
     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'forma_entrega') THEN
-        CREATE TYPE forma_entrega AS ENUM ('retirada', 'entrega');
+        CREATE TYPE forma_entrega AS ENUM ('1', '2');
     END IF;
 END $$;
 
@@ -46,7 +47,7 @@ CREATE TABLE tb_pedido (
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'cargo_funcionario') THEN
-        CREATE TYPE cargo_funcionario AS ENUM ('gerente', 'cozinheiro', 'atendente', 'entregador');
+        CREATE TYPE cargo_funcionario AS ENUM ('1', '2', '3', '4', '5');
     END IF;
 END $$;
 
