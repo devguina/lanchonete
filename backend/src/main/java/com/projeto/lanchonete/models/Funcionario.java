@@ -1,10 +1,9 @@
 package com.projeto.lanchonete.models;
 
-import com.projeto.lanchonete.enums.funcionario.CargoFuncionario;
+import com.projeto.lanchonete.models.enums.funcionario.CargoFuncionario;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;

@@ -1,8 +1,8 @@
 package com.projeto.lanchonete.models;
 
-import com.projeto.lanchonete.enums.pedido.FormaDeEntrega;
-import com.projeto.lanchonete.enums.pedido.StatusPagamento;
-import com.projeto.lanchonete.enums.pedido.StatusPreparacao;
+import com.projeto.lanchonete.models.enums.pedido.FormaDeEntrega;
+import com.projeto.lanchonete.models.enums.pedido.StatusPagamento;
+import com.projeto.lanchonete.models.enums.pedido.StatusPreparacao;
 import jakarta.persistence.*;
 
 import java.util.UUID;

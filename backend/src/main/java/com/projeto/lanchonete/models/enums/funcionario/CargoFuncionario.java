@@ -1,4 +1,4 @@
-package com.projeto.lanchonete.enums.funcionario;
+package com.projeto.lanchonete.models.enums.funcionario;
 
 public enum CargoFuncionario {
     ATENDENTE(1),

@@ -7,7 +7,7 @@ spring:
     datasource:
         username: postgres
         password: 123456
-        url: jdbc:postgresql:localhost:5429
+        url: jdbc:postgresql://localhost:5429/lanchonete
 jpa:
     properties:
         show-sql: true

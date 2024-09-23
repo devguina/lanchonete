@@ -1,4 +1,4 @@
-package com.projeto.lanchonete.enums.pedido;
+package com.projeto.lanchonete.models.enums.pedido;
 
 public enum FormaDeEntrega {
     RETIRADA(1),
