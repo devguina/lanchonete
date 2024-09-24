@@ -11,13 +11,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Cliente {
+@Table(name = "tb_cliente")
+public class ClienteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public UUID id;
 
-    @Column(name = "nome", unique = true)
+    @Column(name = "nome", nullable = false)
     private String nomeCliente;
 
     @Column(name = "rua")

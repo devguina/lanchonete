@@ -8,7 +8,8 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-public class Pedido {
+@Table(name = "tb_pedido")
+public class PedidoModel {
 
     //Enums
     @Column(name = "forma_entrega")
@@ -24,7 +25,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public UUID id;
 
-    public Pedido(StatusPreparacao statusPreparacao, StatusPagamento statusPagamento, FormaDeEntrega formaDeEntrega) {
+    public PedidoModel(StatusPreparacao statusPreparacao, StatusPagamento statusPagamento, FormaDeEntrega formaDeEntrega) {
         setStatusPreparacao(statusPreparacao);
         setStatusPagamento(statusPagamento);
         setFormaDeEntrega(formaDeEntrega);

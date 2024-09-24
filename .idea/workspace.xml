@@ -5,26 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05c7fb05-16fa-4601-bd55-97bc3cca70a5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/FuncionarioRecordDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/LancheRecordDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/PedidoRecordDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/ClienteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/FuncionarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/LancheRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/PedidoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/controllers/ClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/controllers/FuncionarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/controllers/PedidoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/enums/funcionario/CargoFuncionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/enums/funcionario/CargoFuncionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/enums/pedido/FormaDeEntrega.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/enums/pedido/FormaDeEntrega.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/enums/pedido/StatusPagamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/enums/pedido/StatusPagamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/enums/pedido/StatusPreparacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/enums/pedido/StatusPreparacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Funcionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/ClienteRecordDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/ClienteRecordDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/FuncionarioRecordDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/FuncionarioRecordDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/LancheRecordDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/dtos/LancheRecordDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/ClienteModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/FuncionarioModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Lanche.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/LancheModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/models/PedidoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/ClienteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/FuncionarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/FuncionarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/LancheRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/LancheRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/PedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/projeto/lanchonete/repositories/PedidoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,21 +68,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LanchoneteApplication.executor": "Run",
-    "Docker.compose.yaml: Compose Deployment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/workspace/estudo-jpa-michele-brito-2024",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LanchoneteApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/workspace/estudo-jpa-michele-brito-2024&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\workspace\lanchonete\backend" />
