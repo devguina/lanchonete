@@ -17,10 +17,6 @@ public class FuncionarioModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    /*TODO
-    CRIAR coluna no banco de dados para os novos métodos
-     */
-
     @Column(name = "nome_funcionario", nullable = false)
     private String nomeFuncionario;
 
