@@ -17,15 +17,37 @@ public class FuncionarioModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    /*TODO
+    CRIAR coluna no banco de dados para os novos métodos
+     */
+
+    @Column(name = "nome_funcionario", nullable = false)
+    private String nomeFuncionario;
+
+    @Column(name = "sobrenome_funcionario", nullable = false)
+    private String sobreNomeFuncionario;
+
+    @Column(name = "telefone_cliente", nullable = false)
+    private String telefoneFuncionario;
+
+
     @Column(name = "senha_funcionario", nullable = false)
     private String funcionarioLogin;
 
     @Column(name = "login_funcionario", nullable = false)
     private String funcionarioSenha;
 
-    public FuncionarioModel() {
+    public FuncionarioModel(String funcionarioLogin, String funcionarioSenha) {
         this.funcionarioLogin = funcionarioLogin;
         this.funcionarioSenha = funcionarioSenha;
+    }
+
+    public FuncionarioModel(String funcionarioLogin, String funcionarioSenha, String nomeFuncionario,
+                            String sobreNomeFuncionario, String telefoneFuncionario){
+        this(funcionarioLogin,funcionarioSenha);
+        this.nomeFuncionario = nomeFuncionario;
+        this.sobreNomeFuncionario = sobreNomeFuncionario;
+        this.telefoneFuncionario = telefoneFuncionario;
     }
 }
 
