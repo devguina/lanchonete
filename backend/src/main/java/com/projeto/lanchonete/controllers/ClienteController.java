@@ -1,7 +1,7 @@
 package com.projeto.lanchonete.controllers;
 
 import com.projeto.lanchonete.models.ClienteModel;
-import com.projeto.lanchonete.repositories.ClienteRepository;
+import com.projeto.lanchonete.services.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,47 +9,62 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/api")
 public class ClienteController {
 
     @Autowired
-    ClienteRepository clienteRepository;
+    private ClienteService clienteService;
 
+    //POST
     @PostMapping("/cliente")
-    public ResponseEntity<ClienteModel> postSalvaCliente(@RequestBody @Valid ClienteModel clienteModel){
-        return ResponseEntity.status(HttpStatus.CREATED).body(clienteRepository.save(clienteModel));
+    ResponseEntity<ClienteModel> postCliente(@RequestBody @Valid ClienteModel clienteModel){
+        ClienteModel newCliente = clienteService.createCliente(clienteModel);
+        return new ResponseEntity<>(newCliente, HttpStatus.OK);
     }
 
-    @GetMapping("/cliente")
-    public ResponseEntity<List<ClienteModel>> getRetornaTodosClientes(){
-        return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.findAll());
+    //GET ALL
+    @GetMapping("/cliente/all")
+    ResponseEntity<List<ClienteModel>> getAllClientes(){
+       List<ClienteModel> allCliente = clienteService.getAllClientes();
+        return new ResponseEntity<>(allCliente,HttpStatus.OK );
     }
 
+    //GET ID
     @GetMapping("/cliente/{id}")
-    public ResponseEntity<Optional<ClienteModel>> getUmCliente (@PathVariable (value = "id")UUID id){
-        return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.findById(id));
+    public ResponseEntity<?> findClienteById(@PathVariable UUID id){
+        Optional<ClienteModel> clienteModelOptional = clienteService.findClienteById(id);
+        if(clienteModelOptional.isPresent()){
+            return ResponseEntity.ok(clienteModelOptional.get());
+        }
+        else {
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Desculpe, cliente não encontrado");
+        }
     }
 
-    @PutMapping("/cliente/{id}")
-    public ResponseEntity<ClienteModel> atualizaCliente(
-            @PathVariable(value = "id") UUID id,
-            @RequestBody  ClienteModel clienteModelDetalhes){
-       Optional<ClienteModel> clienteModelOptional = clienteRepository.findById(id);
-        var atualizaClienteModel = clienteModelOptional.get();
-        atualizaClienteModel.setNomeCliente(clienteModelDetalhes.getNomeCliente());
-        return ResponseEntity.status(HttpStatus.OK).body(atualizaClienteModel);
-
+    //PUT
+    @PutMapping("/cliente/update/{id}")
+    public ResponseEntity<ClienteModel> updateCliente(@PathVariable UUID id,
+                                                      @RequestBody @Valid ClienteModel clienteModel){
+        try {
+            ClienteModel updateClienteModel = clienteService.updateCliente(id, clienteModel);
+            return new ResponseEntity<>(updateClienteModel, HttpStatus.OK);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
 
-    @DeleteMapping("/cliente/{id}")
-    public ResponseEntity<Object> deletaCliente(
-            @PathVariable(value = "id") UUID id){
-        Optional<ClienteModel> clienteModelOptional = clienteRepository.findById(id);
-        clienteRepository.delete(clienteModelOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Cliente excluido com sucesso!");
+    @DeleteMapping("/cliente/delete/{id}")
+    public ResponseEntity<?> deleteCliente(@PathVariable UUID id){
+        Optional<ClienteModel> clienteModelOptional = clienteService.findClienteById(id);
+        if (clienteModelOptional.isPresent()){
+            clienteService.deleteClienteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Cliente deletado com sucesso!");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não econtrado");
     }
 }
