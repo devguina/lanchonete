@@ -3,6 +3,7 @@ package com.projeto.lanchonete.models;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
@@ -10,9 +11,14 @@ import java.util.UUID;
 @Setter
 @EqualsAndHashCode
 @Entity
+@NoArgsConstructor
 @Table(name = "tb_funcionario")
 public class FuncionarioModel {
 
+    /*TODO
+    corrigir o nome de alguns métodos e lembrar de mudar no controller records e service
+    caso tenha usado
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;

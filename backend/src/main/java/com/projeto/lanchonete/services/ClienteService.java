@@ -42,10 +42,11 @@ public class ClienteService {
 
     //atualiza cliente
     public ClienteModel updateCliente(UUID id, ClienteRecordDto clienteRecordDto){
-        ClienteModel clienteModel = new ClienteModel();
-        BeanUtils.copyProperties(clienteRecordDto, clienteModel);
         Optional<ClienteModel> clienteModelOptional = clienteRepository.findById(id);
         if(clienteModelOptional.isPresent()){
+            ClienteModel clienteModel = new ClienteModel();
+            BeanUtils.copyProperties(clienteRecordDto, clienteModel);
+
             clienteModel.setNomeCliente(clienteModel.getNomeCliente());
             clienteModel.setRuaCliente(clienteModel.getRuaCliente());
             clienteModel.setBairroCliente(clienteModel.getBairroCliente());
