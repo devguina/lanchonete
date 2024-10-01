@@ -20,6 +20,9 @@ flyway:
     schemas: public
     enabled: true
 
+springdoc:
+    swagger-ui:
+        path: /swagger-ui-custom.html
 
 
 

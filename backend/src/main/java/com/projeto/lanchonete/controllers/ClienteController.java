@@ -3,9 +3,14 @@ package com.projeto.lanchonete.controllers;
 import com.projeto.lanchonete.RecordsDto.ClienteRecordDto;
 import com.projeto.lanchonete.models.ClienteModel;
 import com.projeto.lanchonete.services.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,14 +19,19 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(value = "/api", produces = {"apllication/json"})
+@Tag(name = "/api")
 public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
 
-    //POST
-    @PostMapping("/cliente")
+    @Operation(summary = "Realiza o Cadastro de Clientes", method = "POST")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente criado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Parametros invalidos"),
+    })
+    @PostMapping(value = "/cliente")
     ResponseEntity<ClienteModel> postCliente(@RequestBody @Valid ClienteRecordDto clienteRecordDto){
         ClienteModel newCliente = clienteService.createCliente(clienteRecordDto);
         return new ResponseEntity<>(newCliente, HttpStatus.OK);
