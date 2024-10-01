@@ -1,5 +1,6 @@
 package com.projeto.lanchonete.controllers;
 
+import com.projeto.lanchonete.RecordsDto.ClienteRecordDto;
 import com.projeto.lanchonete.models.ClienteModel;
 import com.projeto.lanchonete.services.ClienteService;
 import jakarta.validation.Valid;
@@ -21,8 +22,8 @@ public class ClienteController {
 
     //POST
     @PostMapping("/cliente")
-    ResponseEntity<ClienteModel> postCliente(@RequestBody @Valid ClienteModel clienteModel){
-        ClienteModel newCliente = clienteService.createCliente(clienteModel);
+    ResponseEntity<ClienteModel> postCliente(@RequestBody @Valid ClienteRecordDto clienteRecordDto){
+        ClienteModel newCliente = clienteService.createCliente(clienteRecordDto);
         return new ResponseEntity<>(newCliente, HttpStatus.OK);
     }
 
@@ -49,9 +50,9 @@ public class ClienteController {
     //PUT
     @PutMapping("/cliente/update/{id}")
     public ResponseEntity<ClienteModel> updateCliente(@PathVariable UUID id,
-                                                      @RequestBody @Valid ClienteModel clienteModel){
+                                                      @RequestBody @Valid ClienteRecordDto clienteRecordDto){
         try {
-            ClienteModel updateClienteModel = clienteService.updateCliente(id, clienteModel);
+            ClienteModel updateClienteModel = clienteService.updateCliente(id, clienteRecordDto);
             return new ResponseEntity<>(updateClienteModel, HttpStatus.OK);
         }catch (RuntimeException e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
