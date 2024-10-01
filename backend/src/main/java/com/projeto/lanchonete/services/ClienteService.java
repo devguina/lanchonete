@@ -1,7 +1,9 @@
 package com.projeto.lanchonete.services;
 
+import com.projeto.lanchonete.RecordsDto.ClienteRecordDto;
 import com.projeto.lanchonete.models.ClienteModel;
 import com.projeto.lanchonete.repositories.ClienteRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,12 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+    private ClienteRecordDto clienteRecordDto;
 
     // cadastrando clientes
-    public ClienteModel createCliente(ClienteModel clienteModel){
+    public ClienteModel createCliente(ClienteRecordDto clienteRecordDto){
+        ClienteModel clienteModel = new ClienteModel();
+        BeanUtils.copyProperties(clienteRecordDto, clienteModel);
         return clienteRepository.save(clienteModel);
     }
 
@@ -36,17 +41,18 @@ public class ClienteService {
     }
 
     //atualiza cliente
-    public ClienteModel updateCliente(UUID id, ClienteModel newclienteModel){
+    public ClienteModel updateCliente(UUID id, ClienteRecordDto clienteRecordDto){
+        ClienteModel clienteModel = new ClienteModel();
+        BeanUtils.copyProperties(clienteRecordDto, clienteModel);
         Optional<ClienteModel> clienteModelOptional = clienteRepository.findById(id);
         if(clienteModelOptional.isPresent()){
-            ClienteModel clienteModel = clienteModelOptional.get();
-            clienteModel.setNomeCliente(newclienteModel.getNomeCliente());
-            clienteModel.setRuaCliente(newclienteModel.getRuaCliente());
-            clienteModel.setBairroCliente(newclienteModel.getBairroCliente());
-            clienteModel.setCidadeCliente(newclienteModel.getCidadeCliente());
-            clienteModel.setNumeroCasaCliente(newclienteModel.getNumeroCasaCliente());
-            clienteModel.setNumeroTelefoneCliente(newclienteModel.getNumeroTelefoneCliente());
-            clienteModel.setEmailCliente(newclienteModel.getEmailCliente());
+            clienteModel.setNomeCliente(clienteModel.getNomeCliente());
+            clienteModel.setRuaCliente(clienteModel.getRuaCliente());
+            clienteModel.setBairroCliente(clienteModel.getBairroCliente());
+            clienteModel.setCidadeCliente(clienteModel.getCidadeCliente());
+            clienteModel.setNumeroCasaCliente(clienteModel.getNumeroCasaCliente());
+            clienteModel.setNumeroTelefoneCliente(clienteModel.getNumeroTelefoneCliente());
+            clienteModel.setEmailCliente(clienteModel.getEmailCliente());
 
             return  clienteRepository.save(clienteModel);
         }
