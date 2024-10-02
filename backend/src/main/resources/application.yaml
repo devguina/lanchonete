@@ -9,6 +9,14 @@ spring:
         username: postgres
         password: 123456
         url: jdbc:postgresql://localhost:5429/lanchonete
+
+    security:
+        oauth2:
+            client:
+                registration:
+                    google:
+                        client_id: "lembrar de fazer o acesso no google api console e pega o id e secret"
+                        client_secret:
 jpa:
     properties:
         show-sql: true
@@ -23,6 +31,8 @@ flyway:
 springdoc:
     swagger-ui:
         path: /swagger-ui-custom.html
+
+
 
 
 

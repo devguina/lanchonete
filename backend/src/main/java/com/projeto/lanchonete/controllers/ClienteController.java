@@ -4,13 +4,10 @@ import com.projeto.lanchonete.RecordsDto.ClienteRecordDto;
 import com.projeto.lanchonete.models.ClienteModel;
 import com.projeto.lanchonete.services.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +24,6 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @Operation(summary = "Realiza o Cadastro de Clientes", method = "POST")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Cliente criado com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parametros invalidos"),
-    })
     @PostMapping(value = "/cliente")
     ResponseEntity<ClienteModel> postCliente(@RequestBody @Valid ClienteRecordDto clienteRecordDto){
         ClienteModel newCliente = clienteService.createCliente(clienteRecordDto);
@@ -38,14 +31,16 @@ public class ClienteController {
     }
 
     //GET ALL
-    @GetMapping("/cliente/all")
+    @Operation(summary = "Realiza o retorno de todos os Clientes cadastrados na Base de Dados", method = "GET")
+    @GetMapping(value = "/cliente/all")
     ResponseEntity<List<ClienteModel>> getAllClientes(){
        List<ClienteModel> allCliente = clienteService.getAllClientes();
         return new ResponseEntity<>(allCliente,HttpStatus.OK );
     }
 
     //GET ID
-    @GetMapping("/cliente/{id}")
+    @Operation(summary = "Realiza o retorno de 1 Cliente com base no Id passado", method = "GET")
+    @GetMapping(value = "/cliente/{id}")
     public ResponseEntity<?> findClienteById(@PathVariable UUID id){
         Optional<ClienteModel> clienteModelOptional = clienteService.findClienteById(id);
         if(clienteModelOptional.isPresent()){
@@ -57,7 +52,8 @@ public class ClienteController {
         }
     }
 
-    //PUT
+    @Operation(summary = "Método responsável por atualizar as informações de um cliente, com base no ID que é recebido",
+                method = "PUT")
     @PutMapping("/cliente/update/{id}")
     public ResponseEntity<ClienteModel> updateCliente(@PathVariable UUID id,
                                                       @RequestBody @Valid ClienteRecordDto clienteRecordDto){
@@ -68,7 +64,7 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
+    @Operation(summary = "Deleta um cliente com base no Id passado")
     @DeleteMapping("/cliente/delete/{id}")
     public ResponseEntity<?> deleteCliente(@PathVariable UUID id){
         Optional<ClienteModel> clienteModelOptional = clienteService.findClienteById(id);
